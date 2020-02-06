@@ -28,7 +28,6 @@ namespace QRTools.Functions
 
         public ListWithoutReplacement(List<T> listToInject)
         {
-            Debug.Log(1);
             InitList(listToInject);
         }
         #endregion
