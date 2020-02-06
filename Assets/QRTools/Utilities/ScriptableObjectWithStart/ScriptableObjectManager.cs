@@ -14,10 +14,13 @@ public class ScriptableObjectManager : ScriptableObject
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
         InitSOWithStartCallback();
+#endif
 
         MonoBehaviour m = FindObjectOfType<MonoBehaviour>();
-        m.StartCoroutine(Start());
+        if(m != null)
+            m.StartCoroutine(Start());
     }
 
     IEnumerator Start()
@@ -30,6 +33,7 @@ public class ScriptableObjectManager : ScriptableObject
         yield break;
     }
 
+#if UNITY_EDITOR
     [Button]
     void InitSOWithStartCallback()
     {
@@ -43,4 +47,5 @@ public class ScriptableObjectManager : ScriptableObject
                 ScriptableObjectsWithStartCallback.Add(obj as ScriptableObjectWithStartCallback);
         }
     }
+#endif
 }

@@ -19,7 +19,9 @@ namespace QRTools.Audio
 
         protected virtual void OnEnable()
         {
+#if UNITY_EDITOR
             _previewer = EditorUtility.CreateGameObjectWithHideFlags("Audio preview", HideFlags.HideAndDontSave, typeof(AudioSource)).GetComponent<AudioSource>();
+#endif
         }
 
         protected virtual void OnDisable()
