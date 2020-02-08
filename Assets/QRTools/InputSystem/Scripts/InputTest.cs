@@ -5,12 +5,10 @@ using QRTools.Inputs;
 
 public class InputTest : MonoBehaviour
 {
-    public ButtonInput b;
-
+    
     private void Update()
     {
-        if (b.ReturnValue())
-            b.inputEvent.Raise();
+        
     }
 
     public void Jump()

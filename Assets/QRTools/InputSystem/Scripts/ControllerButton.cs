@@ -1,4 +1,4 @@
-﻿using UnityEngine.Events;
+﻿using QRTools.Variables;
 using UnityEngine;
 
 namespace QRTools.Inputs {
@@ -6,7 +6,7 @@ namespace QRTools.Inputs {
     public class ControllerButton: InputAction
     {
         public KeyCode key;
-        public OnRaise onRaise = new OnRaise();
+        public GameEvent onRaise;
         public bool isPressed = true;
 
         public override void Execute()
@@ -16,7 +16,7 @@ namespace QRTools.Inputs {
 
             if (Input.GetKeyDown(key))
             {
-                onRaise.Invoke();
+                onRaise.Raise();
                 isPressed = true;
             }
             else
@@ -33,6 +33,4 @@ namespace QRTools.Inputs {
             key = newKey;
         }
     }
-
-    public class OnRaise : UnityEvent { }
 }

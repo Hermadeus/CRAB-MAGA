@@ -3,6 +3,8 @@ using UnityEngine;
 using System;
 using UnityEditor;
 
+using Sirenix.OdinInspector;
+
 namespace QRTools.Variables
 {
     [CreateAssetMenu(fileName = "New event", menuName = "QRTools/Variables/Events/Event", order = 0)]
@@ -30,6 +32,7 @@ namespace QRTools.Variables
         /// <summary>
         /// Play all listeners of this GameEvent
         /// </summary>
+        [Button("Raise")]
         public void Raise()
         {
             for (int i = listeners.Count - 1; i >= 0; i--)

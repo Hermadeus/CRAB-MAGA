@@ -7,9 +7,7 @@ namespace QRTools.Inputs
     [CreateAssetMenu(fileName = "New Axis", menuName = "QRTools/Input/Axis", order = 1)]
     public class AxisInput : InputAction
     {
-        #region Properties & Variables
-        [Tooltip("Float returned")]
-        [SerializeField] private float value;
+        #region Properties & Variables        
         [Tooltip("SIMPLE -> Simple Axis, RAW -> Use GetAxisRaw, CLAMPED -> ClampedReturnValue")] [EnumPaging]
         public AxisType axisType;
 
@@ -17,6 +15,9 @@ namespace QRTools.Inputs
         public FloatVariable floatVariableRef;
         [Tooltip("Play an event if value != 0")]
         public GameEvent inputEvent;
+
+        [Tooltip("Float returned")]
+        [SerializeField, ReadOnly] private float value;
 
         public float Value
         {

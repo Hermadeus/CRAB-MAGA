@@ -15,7 +15,9 @@ MonoBehaviour:
   description: 
   isActive: 1
   inputName: 
-  isPressed: 0
   inputType: 0
   inputEvent: {fileID: 0}
+  refBoolVariable: {fileID: 0}
   doubleClickTime: 0.2
+  multiClickTime: 0.4
+  isPressed: 0

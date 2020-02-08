@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using QRTools.Variables;
+using Sirenix.OdinInspector;
 
 namespace QRTools.Inputs
 {
@@ -7,8 +8,6 @@ namespace QRTools.Inputs
     public class ButtonInput : InputAction
     {
         #region Properties & Variables        
-        [Tooltip("Bool returned")]
-        public bool isPressed = false;
         [Tooltip("DOWN -> When touch is down, UP -> When touch is up, CLICKED -> While Input is pressed, DOUBLE_CLICK -> When touch is down 2 times in a delay")]
         public InputType inputType;
         [Tooltip("Raise an event when isPressed return true")]
@@ -16,13 +15,16 @@ namespace QRTools.Inputs
         [Tooltip("Reference a BoolVariable")]
         public BoolVariable refBoolVariable;
 
-        [Tooltip("Delay between two click if DOUBLE_CLICK")]
+        [Tooltip("Delay between two click if DOUBLE_CLICK"), ShowIf("inputType", InputType.DOUDLE_CLICK)]
         public float doubleClickTime = .2f;
         private float lastClickTime;
 
-        [Tooltip("Delay between each click if REPETING_CLICK")]
+        [Tooltip("Delay between each click if REPETING_CLICK"), ShowIf("inputType", InputType.REPETING_CLICK)]
         public float multiClickTime = .4f;
         private float multiClickTimer;
+
+        [Tooltip("Bool returned"), ReadOnly]
+        public bool isPressed = false;
         #endregion
 
         #region Public Methods

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efa7e27d99f35c459e3b332f3b17632, type: 3}
+  m_Name: New Touch
+  m_EditorClassIdentifier: 
+  description: Ne pas linker !
+  isActive: 1
+  inputName: 
+  touchType: 0
+  onInput: {fileID: 11400000, guid: a09b737ebb6480246b6f101316ba1004, type: 2}
+  doubleClickTime: 0.2
+  onTouchEnter: {fileID: 0}
+  onTouchStay: {fileID: 0}
+  longPressedTime: 0.2
+  longPressedTimer: -0.8854686
+  onSwipeRight: {fileID: 0}
+  onSwipeLeft: {fileID: 0}
+  onSwipeUp: {fileID: 0}
+  onSwipeDown: {fileID: 0}
+  swipeDistanceThresold: 50
