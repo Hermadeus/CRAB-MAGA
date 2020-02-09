@@ -2,45 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Sirenix.OdinInspector;
-
 using DG.Tweening;
 
 namespace CRABMAGA
 {
     [CreateAssetMenu(menuName = "CRAB MAGA/Behaviours/Simple Movement")]
-    public class SimpleMovement : ScriptableWithDescription, IMovementBehaviour
+    public class SimpleMovement : MovementBehaviour
     {
-        [BoxGroup("Movement")]
-        public float speed = 5f;
-
-        [BoxGroup("SideMovement")]
-        public float sideMovementDuration = 1f;
-        [BoxGroup("SideMovement")]
-        public Ease easingMovement = Ease.InBounce;
-
-        public void Move(Crab crab)
+        public override void Move(Crab crab)
         {
-            crab.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+            base.Move(crab);
         }
 
-        public void TurnRight(Crab crab)
+        public override void TurnRight(Crab crab)
         {
-            if (crab.currentLine + 1 > crab.lineEditor.lines.Count - 1)
-                return;
-            else
-                crab.currentLine += 1;
-
+            base.TurnRight(crab);
             crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration).SetEase(easingMovement);
         }
 
-        public void TurnLeft(Crab crab)
+        public override void TurnLeft(Crab crab)
         {
-            if (crab.currentLine - 1 < 0)
-                return;
-            else
-                crab.currentLine -= 1;
-
+            base.TurnLeft(crab);
             crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration).SetEase(easingMovement);
         }
     }

@@ -143,13 +143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe1eb874d39514690cf4b8970eed24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
+  description: CrabFollower.AddTurningActionRight
   ListenerName: 
   Event: {fileID: 11400000, guid: 1a568b64d66c52849825ae9eefee3310, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3356835215257963627}
+      - m_Target: {fileID: 8334517308334819687}
         m_MethodName: AddTurningActionRight
         m_Mode: 1
         m_Arguments:
@@ -173,13 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe1eb874d39514690cf4b8970eed24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
+  description: CrabFollower.AddTurningActionLeft
   ListenerName: 
   Event: {fileID: 11400000, guid: 84aacf3915b0c8445b4187b3b7ba3507, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3356835215257963627}
+      - m_Target: {fileID: 8334517308334819687}
         m_MethodName: AddTurningActionLeft
         m_Mode: 1
         m_Arguments:
@@ -200,8 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3356835215257963626}
-  - component: {fileID: 3356835215257963627}
-  - component: {fileID: 1059515732}
+  - component: {fileID: 8334517308334819687}
   m_Layer: 0
   m_Name: CrabFollower
   m_TagString: Untagged
@@ -225,7 +224,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3356835215257963627
+--- !u!114 &8334517308334819687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,14 +233,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3356835215257963625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2c286fb3a479349ad2f31f8a780141, type: 3}
+  m_Script: {fileID: 11500000, guid: ba283f5bb1b9dc84c9f58141a896b315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 1059515732}
+    - {fileID: 11400000, guid: 404f7309471cd054ba9cc8bfa81c0eb1, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -250,22 +249,31 @@ MonoBehaviour:
     - Name: movementBehaviour
       Entry: 10
       Data: 0
+    - Name: nextMovementPosition
+      Entry: 7
+      Data: 0|System.Collections.Generic.Queue`1[[System.Single, mscorlib]], System
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: nextMovementAction
+      Entry: 7
+      Data: 1|System.Collections.Generic.Queue`1[[CRABMAGA.TurningMovement, Assembly-CSharp]],
+        System
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   currentLine: 0
   lineEditor: {fileID: 0}
   generalCrab: {fileID: 0}
---- !u!114 &1059515732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3356835215257963625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6967ab1fd9a63439f17d1d0cfac127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  sideMovementDuration: 0.75
-  easingMovement: 17
-  sideMovementThickness: {x: -0.05, y: 0.2}

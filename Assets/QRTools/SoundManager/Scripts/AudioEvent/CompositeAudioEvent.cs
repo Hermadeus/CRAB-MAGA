@@ -41,7 +41,6 @@ namespace QRTools.Audio
 
         public void PlaySound(AudioSource source, string _name)
         {
-            SimpleAudioEvent s = null;
             for (int i = 0; i < Entries.Length; i++)
             {
                 if (Entries[i].Event.Name == _name)

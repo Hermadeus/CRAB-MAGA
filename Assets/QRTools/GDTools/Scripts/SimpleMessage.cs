@@ -14,7 +14,7 @@ namespace QRTools.GDTools
         [SerializeField, GUIColor("GetButtonColor"), BoxGroup("Infos")] Priority priority = default;        
 
         [SerializeField, BoxGroup("Message")] UnityEngine.Object Object = default;
-        [SerializeField, BoxGroup("Message")] private int line = default;
+        [SerializeField, BoxGroup("Message")] private int atLine = default;
         [SerializeField, TextArea(3, 5), BoxGroup("Message")] string message = default;
 
         [SerializeField] bool isRead = default;

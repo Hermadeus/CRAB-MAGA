@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
 
 using Sirenix.OdinInspector;
-using System;
 
 namespace CRABMAGA
 {

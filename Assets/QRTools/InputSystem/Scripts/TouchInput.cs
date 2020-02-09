@@ -17,11 +17,11 @@ namespace QRTools.Inputs
         public float doubleClickTime = .2f;
         private float lastClickTime = .2f;
 
-        [Title("Fields after are to consifers only in LongPressed or Swipe")]
+        [Title("Other events")]
         public GameEvent onTouchEnter = default;
         public GameEvent onTouchStay = default;
+        public GameEvent onTouchEnd = default;
 
-        
         #region LongTouch
         [Tooltip("Delay between two click if SIMPLE_LONGPRESSED"), ShowIf("touchType", TouchState.SIMPLE_LONGPRESSED)]
         public float longPressedTime = .5f;
@@ -39,8 +39,11 @@ namespace QRTools.Inputs
         [ShowIf("touchType", TouchState.VERTICAL_SWIPE)]
         public GameEvent onSwipeDown = default;
 
+
         [Tooltip("Distance to run with your finger to activate the input")]
         public float swipeDistanceThresold = 50f;
+
+        bool asSwipe = false;
         #endregion
 
         public TouchState TouchState
@@ -150,10 +153,14 @@ namespace QRTools.Inputs
                         break;
                     case TouchPhase.Moved:
                         onTouchStay?.Raise();
-                        break;
-                    case TouchPhase.Ended:
+
+                        if (asSwipe) return;
                         endPos = touch.position;
                         AnalyseGesture(startPos, endPos, state);
+                        break;
+                    case TouchPhase.Ended:
+                        asSwipe = false;
+                        onTouchEnd?.Raise();
                         break;
                 }
             }
@@ -163,6 +170,7 @@ namespace QRTools.Inputs
         {
             if(Vector2.Distance(start, end) > swipeDistanceThresold)
             {
+                asSwipe = true;
                 onInput?.Raise();
 
                 switch (state)
@@ -230,21 +238,50 @@ namespace QRTools.Inputs
             }
         }
 
+        void Simple()
+        {
+            if (Input.touchCount == 1)
+            {
+                touch = Input.GetTouch(0);                
+
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        onInput?.Raise();
+                        onTouchEnter?.Raise();
+                        break;
+                    case TouchPhase.Moved:
+                        onTouchStay?.Raise();
+                        break;
+                    case TouchPhase.Stationary:
+                        onTouchStay?.Raise();
+                        break;
+                    case TouchPhase.Ended:
+                        onTouchEnd?.Raise();
+                        break;
+                    case TouchPhase.Canceled:
+                        break;
+                }
+            }
+        }
+
         void SimpleTouch(TouchPhase phase)
         {
             if (Input.touchCount == 1)
             {
                 touch = Input.GetTouch(0);
+
                 if (touch.phase == phase)
                     onInput?.Raise();
             }
         }
-        #endregion
+            #endregion
     }
 
-    #region Enums
+#region Enums
     public enum TouchState
     {
+        SIMPLE,
         SIMPLE_DOWN,
         SIMPLE_UP,
         SIMPLE_PRESSED,
@@ -256,5 +293,5 @@ namespace QRTools.Inputs
         HORIZONTAL_SWIPE,
         VERTICAL_SWIPE
     }
-    #endregion
+#endregion
 }

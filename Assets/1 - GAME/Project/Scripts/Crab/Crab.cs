@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-
-using QRTools;
+﻿using UnityEngine;
 
 using Sirenix.OdinInspector;
 
@@ -11,20 +6,40 @@ namespace CRABMAGA
 {
     public class Crab : SerializedMonoBehaviour
     {
+        /// <summary>
+        /// IMovementBehaviour qui vient de la classe Crab - 
+        /// Gère le mouvement du crab - 
+        /// </summary>
         public IMovementBehaviour movementBehaviour = default;
 
+        /// <summary>
+        /// Line sur laquelle se situe le crab
+        /// </summary>
         public int currentLine;
-        [HideInInspector] public LineEditor lineEditor;
 
-        public Crab generalCrab = default;
+        /// <summary>
+        /// Line editor (nom à changer)
+        /// </summary>
+        [HideInInspector] public LineEditor lineEditor;
 
         private void Start()
         {
             lineEditor = FindObjectOfType<LineEditor>();
-            currentLine = lineEditor.GetLine(generalCrab.transform.position);
+
+            Init();
+        }
+
+        protected virtual void Init()
+        {
+            currentLine = lineEditor.GetLine(this.transform.position);
         }
 
         private void Update()
+        {
+            Execute();
+        }
+
+        protected virtual void Execute()
         {
             movementBehaviour.Move(this);
         }
@@ -37,18 +52,5 @@ namespace CRABMAGA
                 0
                 );
         }
-
-        public void AddTurningActionRight()
-        {
-            FollowMovement fm = movementBehaviour as FollowMovement;
-            fm.AddRightMove(generalCrab);
-        }
-
-        public void AddTurningActionLeft()
-        {
-            FollowMovement fm = movementBehaviour as FollowMovement;
-            fm.AddLeftMove(generalCrab);
-        }
-
     }
 }

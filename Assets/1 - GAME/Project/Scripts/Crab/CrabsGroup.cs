@@ -13,7 +13,7 @@ namespace CRABMAGA
 
         public Transform miniCrabParent;
 
-        public Crab leader = default;
+        public GeneralCrab leader = default;
 
         public int initCrab;
 
