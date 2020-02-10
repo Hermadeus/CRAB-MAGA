@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace CRABMAGA
 {
-    public class GeneralCrab : Crab, IGeneralCrab
+    public class GeneralCrab : Crab
     {
-        
+        public GeneralCrabData generalCrabData = default;
     }
 }

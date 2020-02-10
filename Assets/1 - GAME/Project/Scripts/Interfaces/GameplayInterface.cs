@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using QRTools.Variables;
+
 namespace CRABMAGA
 {
     /// <summary>
@@ -7,6 +9,7 @@ namespace CRABMAGA
     /// </summary>
     public interface IMovementBehaviour
     {
+        DictionaryStringFloatVariable SpeedData { get; set; }
         void Move(Crab crab);
         void TurnRight(Crab crab);
         void TurnLeft(Crab crab);
@@ -31,11 +34,8 @@ namespace CRABMAGA
         void AddTurningActionLeft();
     }
 
-    /// <summary>
-    /// Pour les généraux
-    /// </summary>
-    public interface IGeneralCrab
+    public interface ICrabUnit
     {
-
+        void Init();
     }
 }

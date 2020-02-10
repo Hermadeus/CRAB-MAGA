@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8161be4ff71e51c4cb731427aae5d837, type: 3}
-  m_Name: Simple Movement
+  m_Script: {fileID: 11500000, guid: 7d7eaddddfa4b28458e128803e3cfebd, type: 3}
+  m_Name: Classic Leader Data
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  description: "Avance toujours,\nTourne \xE0 droite\nTourne \xE0 gauche"
-  speedData: {fileID: 11400000, guid: 0b31e703942a62945956262067678192, type: 2}
-  sideMovementDuration: {fileID: 11400000, guid: ff8ae7d989235da458c6f816d8c31001,
-    type: 2}
-  easingMovement: {fileID: 11400000, guid: daa3114eb007240408746ab70dbd6845, type: 2}
+  description: 
+  generalCrabPrefab: {fileID: 3434864782944416480, guid: 00568a48dad19074abd69e61d2d2c594,
+    type: 3}
+  crabFollowerPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
+    type: 3}
+  followersMax: 10

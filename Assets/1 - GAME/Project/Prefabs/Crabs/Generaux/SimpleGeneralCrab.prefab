@@ -60,6 +60,7 @@ MonoBehaviour:
       Data: 0
   currentLine: 0
   lineEditor: {fileID: 0}
+  generalCrabData: {fileID: 11400000, guid: 19fcc78e445dda4459591dc3117bb57a, type: 2}
 --- !u!1 &3434864783430982376
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe1eb874d39514690cf4b8970eed24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "D\xE9placement du crabe vers la droite"
+  description: "D\xE9placement du crabe vers la droite\nSimpleMovement.TurnRight(generalCrab)"
   ListenerName: OnRightMovement
   Event: {fileID: 11400000, guid: 1a568b64d66c52849825ae9eefee3310, type: 2}
   Response:
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe1eb874d39514690cf4b8970eed24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "D\xE9placement du crabe vers la gauche"
+  description: "D\xE9placement du crabe vers la gauche\nSimpleMovement.TurnLeft(generalCrab)"
   ListenerName: OnLeftMovement
   Event: {fileID: 11400000, guid: 84aacf3915b0c8445b4187b3b7ba3507, type: 2}
   Response:

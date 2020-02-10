@@ -22,7 +22,7 @@ namespace CRABMAGA
         {
             IFollowMovementBehaviour cf = crab as CrabFollower;
 
-            crab.transform.position += new Vector3(Mathf.Sin(.1f * Time.deltaTime), 0, speed) * Time.deltaTime;
+            crab.transform.position += new Vector3(Mathf.Sin(.1f * Time.deltaTime), 0, crab.Speed) * Time.deltaTime;
 
             if (cf.NextMovementPosition?.Count > 0)
                 if (crab.transform.position.z > cf.NextMovementPosition.ElementAt(0) - cf.Thickness)
@@ -37,7 +37,7 @@ namespace CRABMAGA
             base.TurnRight(crab);
             crab.transform.DOMoveX(
                 crab.lineEditor.GoToLine(crab.currentLine) + (Random.insideUnitCircle.x / sideMovementReplacementThickness),
-                sideMovementDuration).SetEase(easingMovement);
+                sideMovementDuration.Value).SetEase(easingMovement.Value);
         }
 
         public override void TurnLeft(Crab crab)
@@ -45,7 +45,7 @@ namespace CRABMAGA
             base.TurnLeft(crab);
             crab.transform.DOMoveX(
                 crab.lineEditor.GoToLine(crab.currentLine) + (Random.insideUnitCircle.x / sideMovementReplacementThickness),
-                sideMovementDuration).SetEase(easingMovement);
+                sideMovementDuration.Value).SetEase(easingMovement.Value);
         }
 
         public void AddActionMove(Crab generalCrab, IFollowMovementBehaviour crab, TurningMovement action)

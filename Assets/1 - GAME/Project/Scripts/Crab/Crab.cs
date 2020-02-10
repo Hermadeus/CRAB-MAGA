@@ -2,6 +2,10 @@
 
 using Sirenix.OdinInspector;
 
+using QRTools.Variables;
+
+using DG.Tweening;
+
 namespace CRABMAGA
 {
     public class Crab : SerializedMonoBehaviour
@@ -11,6 +15,8 @@ namespace CRABMAGA
         /// Gère le mouvement du crab - 
         /// </summary>
         public IMovementBehaviour movementBehaviour = default;
+
+        public float Speed { get; set; }
 
         /// <summary>
         /// Line sur laquelle se situe le crab
@@ -32,6 +38,7 @@ namespace CRABMAGA
         protected virtual void Init()
         {
             currentLine = lineEditor.GetLine(this.transform.position);
+            SetSpeed("normal");
         }
 
         private void Update()
@@ -51,6 +58,12 @@ namespace CRABMAGA
                 transform.position.y,
                 0
                 );
+        }
+
+        public void SetSpeed(string state)
+        {
+            float newSpeed = movementBehaviour.SpeedData.GetValue(state);
+            DOTween.To(() => Speed, x => Speed = x, newSpeed, 2);
         }
     }
 }

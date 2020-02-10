@@ -4,17 +4,20 @@ using DG.Tweening;
 
 using Sirenix.OdinInspector;
 
+using QRTools.Variables;
+
 namespace CRABMAGA
 {
     public abstract class MovementBehaviour : ScriptableWithDescription, IMovementBehaviour
     {
         [BoxGroup("Movement"), Tooltip("Vitesse de l'entité")]
-        public float speed = 1f;
+        [SerializeField] private DictionaryStringFloatVariable speedData = default;
+        public DictionaryStringFloatVariable SpeedData { get => speedData; set => speedData = value; }
 
         [BoxGroup("SideMovement"), Tooltip("Vitesse pour changer de line")]
-        public float sideMovementDuration = 1.5f;
+        public FloatVariable sideMovementDuration = default;
         [BoxGroup("SideMovement"), Tooltip("Forme de la courbe que prend l'entité pour changer de line")]
-        public Ease easingMovement = Ease.InOutQuad;
+        public EasingVariable easingMovement = default;
 
         /// <summary>
         /// Movement 
@@ -22,7 +25,7 @@ namespace CRABMAGA
         /// <param name="crab"></param>
         public virtual void Move(Crab crab)
         {
-            crab.transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
+            crab.transform.position += new Vector3(0, 0, crab.Speed) * Time.deltaTime;
         }
 
         /// <summary>

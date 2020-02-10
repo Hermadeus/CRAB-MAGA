@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using DG.Tweening;
 
@@ -17,13 +15,13 @@ namespace CRABMAGA
         public override void TurnRight(Crab crab)
         {
             base.TurnRight(crab);
-            crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration).SetEase(easingMovement);
+            crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration.Value).SetEase(easingMovement.Value);
         }
 
         public override void TurnLeft(Crab crab)
         {
             base.TurnLeft(crab);
-            crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration).SetEase(easingMovement);
+            crab.transform.DOMoveX(crab.lineEditor.GoToLine(crab.currentLine), sideMovementDuration.Value).SetEase(easingMovement.Value);
         }
     }
 }

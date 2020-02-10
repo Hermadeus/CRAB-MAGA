@@ -23,6 +23,7 @@ namespace CRABMAGA
         protected override void Init()
         {
             currentLine = lineEditor.GetLine(generalCrab.transform.position);
+            SetSpeed("normal");
         }
 
         protected override void Execute()

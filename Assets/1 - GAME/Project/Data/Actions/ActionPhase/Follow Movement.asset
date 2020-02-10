@@ -22,8 +22,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   description: "Suit une target\nTourne au m\xEAme endroit que la target"
-  speed: 1
-  sideMovementDuration: 1.5
-  easingMovement: 7
+  speedData: {fileID: 11400000, guid: 0b31e703942a62945956262067678192, type: 2}
+  sideMovementDuration: {fileID: 11400000, guid: ff8ae7d989235da458c6f816d8c31001,
+    type: 2}
+  easingMovement: {fileID: 11400000, guid: daa3114eb007240408746ab70dbd6845, type: 2}
   sideMovementThickness: {x: -0.2799316, y: 0.30843788}
-  sideMovementReplacementThickness: 1.9
+  sideMovementReplacementThickness: 1.6

@@ -15,11 +15,12 @@ MonoBehaviour:
   description: "D\xE9place les crabes sur X"
   isActive: 1
   inputName: HorizontalSwipe
-  touchType: 6
+  touchType: 7
   onInput: {fileID: 0}
   doubleClickTime: 0.2
   onTouchEnter: {fileID: 0}
   onTouchStay: {fileID: 0}
+  onTouchEnd: {fileID: 0}
   longPressedTime: 0.5
   longPressedTimer: 0
   onSwipeRight: {fileID: 11400000, guid: 1a568b64d66c52849825ae9eefee3310, type: 2}
