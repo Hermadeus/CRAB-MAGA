@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7eaddddfa4b28458e128803e3cfebd, type: 3}
-  m_Name: Classic Leader Data
+  m_Script: {fileID: 11500000, guid: 8e24ff3f169a2194bb0bb7fb9b0d0375, type: 3}
+  m_Name: List General Crab Data
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,8 +22,5 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   description: 
-  generalCrabPrefab: {fileID: 3434864782944416480, guid: 00568a48dad19074abd69e61d2d2c594,
-    type: 3}
-  crabFollowerPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
-    type: 3}
-  followersMax: 10
+  generals:
+  - {fileID: 11400000, guid: 19fcc78e445dda4459591dc3117bb57a, type: 2}

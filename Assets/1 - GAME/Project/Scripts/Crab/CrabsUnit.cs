@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 
+using System.Collections.Generic;
+
 using Sirenix.OdinInspector;
 
 namespace CRABMAGA
 {
     public class CrabsUnit : SerializedMonoBehaviour, ICrabUnit
     {
-        public ICrabFactory crabUnityFactory = default;
+        public GeneralCrab generalCrab = default;
+        public List<CrabFollower> followers = new List<CrabFollower>();
 
-        public GeneralCrab leader = default;
+        public Transform crabFollowerParent;
 
         public void Init()
         {
-            InstantiateGeneral();
-        }
-
-        public void InstantiateGeneral()
-        {
-            crabUnityFactory.InstantiateCrab(leader.generalCrabData.generalCrabPrefab, transform.position, leader.generalCrabData.followersMax, leader.transform);
+            throw new System.NotImplementedException();
         }
     }
 }

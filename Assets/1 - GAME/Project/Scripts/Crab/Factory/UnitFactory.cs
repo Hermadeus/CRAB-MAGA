@@ -5,93 +5,56 @@ using UnityEngine;
 namespace CRABMAGA
 {
     [CreateAssetMenu(menuName = "CRAB MAGA/Factory/Crab Unity Factory")]
-    public class UnitFactory : ScriptableWithDescription
+    public class UnitFactory : ScriptableWithDescription, ICrabFactory
     {
-        /// <summary>
-        /// IMPORTANT ----------------- IMPORTANT
-        /// 
-        /// Depuis ce script:
-        /// --> Instantiation d'une unité
-        /// --> Instantiation d'un général
-        /// --> Instantiation d'un follower
-        /// 
-        /// </summary>
-
-
-
-        public ICrabFactory crabFollowerFactory = default;
+        public CrabsUnit CrabUnitPrefab = default;
 
         /// <summary>
-        /// Instantie une unité avec un général.
-        /// crab = le general à instancier,
-        /// position = la position d'apparition du général
-        /// quantite = le nombre de follower à instancier
-        /// parent = transform où stocker les unités (dans l'absolu parent = null)
+        /// Permet d'instantier une unité de crabe complete
         /// </summary>
-        public Crab InstantiateCrab(Crab crab, Vector3 position, int? quantite, Transform parent)
+        public CrabsUnit InstantiateCrabsUnit(GeneralCrabData general, int quantiteFollower, Vector3 position)
         {
-            //Création d'un GameObject vide "UNIE DE CRAB"
-            GameObject unitParent = new GameObject("Unité de crabe");
-            if(parent != null)
-                unitParent.transform.parent = parent;
+            CrabsUnit newUnit = Instantiate(CrabUnitPrefab, position, Quaternion.identity);
+            newUnit.generalCrab = InstantiateGeneralCrab(general, newUnit, position);
 
-            //Initialisation de l'object en CrabsUnity
-            CrabsUnit crabsUnity = unitParent.AddComponent<CrabsUnit>();
+            if(quantiteFollower > 0)
+            {
+                newUnit.followers = InstantiateFollowers(newUnit.generalCrab.generalCrabData, quantiteFollower, position, newUnit.transform);
+                for (int i = 0; i < newUnit.followers.Count; i++)
+                    newUnit.followers[i].generalCrab = newUnit.generalCrab;
+            }
 
-            //Création d'un GameObject vide pour acceuillir les followers
-            GameObject followerParent = new GameObject("Followers");
-            followerParent.transform.parent = unitParent.transform;
+            newUnit.name = "Crab Unit : " + general.generalCrabName;
 
-            //Instantiation du général
-            GeneralCrab general = Instantiate(crab, position, Quaternion.identity, unitParent.transform) as GeneralCrab;
-            Crab leader = crabsUnity.leader = general;
-
-            //Instantiation des followers
-            Crab[] crabsFollowers = crabFollowerFactory.InstantiateCrabs(crabsUnity.leader.generalCrabData.crabFollowerPrefab,
-                followerParent.transform.position,
-                crabsUnity.leader.generalCrabData.followersMax,
-                followerParent.transform
-                );
-
-            foreach (CrabFollower cf in crabsFollowers)
-                cf.generalCrab = general;
-
-            return leader;
+            return newUnit;
         }
 
-        public Crab[] InstantiateCrabs(Crab crab, Vector3 position, int? quantite, Transform parent)
+        /// <summary>
+        /// Permet d'instantier un general crab
+        /// </summary>
+        public GeneralCrab InstantiateGeneralCrab(GeneralCrabData general, CrabsUnit unit, Vector3 position)
         {
-            GameObject unitParent = new GameObject("Unité de crabe");
-            if (parent != null)
-                unitParent.transform.parent = parent;
+            GeneralCrab newGeneralCrab = Instantiate(general.generalCrabPrefab as GeneralCrab, position, Quaternion.identity);
 
-            //Initialisation de l'object en CrabsUnity
-            CrabsUnit crabsUnity = unitParent.AddComponent<CrabsUnit>();
-
-            //Création d'un GameObject vide pour acceuillir les followers
-            GameObject followerParent = new GameObject("Followers");
-            followerParent.transform.parent = unitParent.transform;
-
-            //Instantiation du général
-            GeneralCrab general = Instantiate(crab, position, Quaternion.identity, unitParent.transform) as GeneralCrab;
-            Crab leader = crabsUnity.leader = general;
-
-            //Instantiation des followers
-            Crab[] crabsFollowers = crabFollowerFactory.InstantiateCrabs(crabsUnity.leader.generalCrabData.crabFollowerPrefab,
-                followerParent.transform.position,
-                crabsUnity.leader.generalCrabData.followersMax,
-                followerParent.transform
-                );
-
-            foreach (CrabFollower cf in crabsFollowers)
-                cf.generalCrab = general;
-
-            return crabsFollowers;
+            return newGeneralCrab;
         }
 
-        public CrabsUnit InstantiateCrabsUnit(Crab general, Crab follower, int quantiteFollower, Vector3 position)
+        /// <summary>
+        /// Permet d'instancier des followers
+        /// </summary>
+        public List<CrabFollower> InstantiateFollowers(GeneralCrabData general, int quantiteFollower, Vector3 position, Transform parent)
         {
-            throw new System.NotImplementedException();
+            List<CrabFollower> newCrabsFollower = new List<CrabFollower>();
+            for (int i = 0; i < quantiteFollower; i++)
+            {
+                newCrabsFollower.Add(Instantiate(
+                    general.crabFollowerPrefab,
+                    position + new Vector3(Random.Range(-.5f, .5f), 0, Random.Range(-.6f, -2f)),
+                    Quaternion.identity,
+                    parent
+                    ));
+            }
+            return newCrabsFollower;
         }
 
     }

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
+
+using System.Collections;
 
 namespace QRTools.Actions
 {
@@ -20,7 +23,7 @@ namespace QRTools.Actions
         public uint milliseconds = 0;
 
         [BoxGroup("Actions")]
-        public Action[]
+        public UnityEvent
             onTimerStart = default,
             onTimerBreak = default,
             onTimerEnd = default;
@@ -41,8 +44,6 @@ namespace QRTools.Actions
         {
             if (startOnEnable)
                 Restart();
-            else
-                tempsTotalRestant = 0.0f;
         }
 
         public override void Execute()
@@ -57,22 +58,33 @@ namespace QRTools.Actions
                 {
                     tempsTotalRestant = 0.0f;
 
-                    if (onTimerEnd != null)
-                        for (int i = 0; i < onTimerEnd.Length; i++)
-                            onTimerEnd[i].Execute();
+                    onTimerEnd?.Invoke();
                 }
             }
+        }
+
+        public void StartTimer()
+        {
+            MonoBehaviour m = FindObjectOfType<MonoBehaviour>();
+            m.StartCoroutine(StartTimerCor());
+        }
+        public IEnumerator StartTimerCor()
+        {
+            onTimerStart?.Invoke();
+            yield return tempsTotalRestant = CalculateTempsRestant();
+
+            yield return new WaitForSeconds(tempsTotalRestant);
+            onTimerEnd?.Invoke();
+            yield break;
         }
         #endregion
 
         #region Public Methods
-        public void Restart(GameObject instigator = null)
+        public void Restart()
         {
-            tempsTotalRestant = Max = hours * 3600 + minutes * 60 + seconds + milliseconds * 0.001f;
+            tempsTotalRestant = CalculateTempsRestant();
 
-            if (onTimerStart != null)
-                for (int i = 0; i < onTimerStart.Length; i++)
-                    onTimerStart[i].Execute();
+            onTimerStart?.Invoke();
         }
 
         public void Break()
@@ -81,13 +93,17 @@ namespace QRTools.Actions
             {
                 tempsTotalRestant = 0.0f;
 
-                if(onTimerBreak != null)
-                    for (int i = 0; i < onTimerBreak.Length; i++)
-                        onTimerBreak[i].Execute();
+                onTimerBreak?.Invoke();
             }
         }
 
         public void Pause(bool pauseState) => inPause = pauseState;
         #endregion
+
+        public float CalculateTempsRestant()
+        {
+            tempsTotalRestant = Max = hours * 3600 + minutes * 60 + seconds + milliseconds * 0.001f;
+            return tempsTotalRestant;
+        }
     }
 }

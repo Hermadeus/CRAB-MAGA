@@ -15,14 +15,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: da98135284ab1a040906f0ed9042e36a, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: crabFollowerFactory
-      Entry: 10
-      Data: 0
+    SerializationNodes: []
   description: "Permet d'instancier une unit\xE9 complete"
+  CrabUnitPrefab: {fileID: 2033653698023534494, guid: 6c53c3435771b6240b49a60e30b3f1e0,
+    type: 3}

@@ -5,15 +5,12 @@ using Sirenix.OdinInspector;
 
 namespace CRABMAGA
 {
-    public class ActionPhaseManager : SerializedMonoBehaviour, ICrabUnitFactory
+    public class ActionPhaseManager : SerializedMonoBehaviour
     {
         public UnityEvent onStart = new UnityEvent();
-        public UnityEvent onExit = new UnityEvent();
+        public UnityEvent onExit = new UnityEvent();        
 
-        public ICrabFactory crabUnity = default;
-        public Transform parent;
-
-        public GeneralCrabData generalData = default;
+        public ActionPhase actionPhase = default;
 
         private void Start()
         {
@@ -22,12 +19,8 @@ namespace CRABMAGA
 
         public void InitializeActionPhase()
         {
-            crabUnity.InstantiateCrab(generalData.generalCrabPrefab, transform.position, null, null);
-        }
+            actionPhase.StartPhase(this);
 
-        public CrabsUnit InstantiateCrabsUnit(Crab general, Crab follower, int quantiteFollower, Vector3 position)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

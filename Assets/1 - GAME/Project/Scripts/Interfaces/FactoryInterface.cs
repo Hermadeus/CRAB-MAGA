@@ -9,12 +9,8 @@ namespace CRABMAGA {
     /// </summary>
     public interface ICrabFactory
     {
-        Crab InstantiateCrab(Crab crab, Vector3 position, int? quantite, Transform parent);
-        Crab[] InstantiateCrabs(Crab crab, Vector3 position, int? quantite, Transform parent);
-    }
-
-    public interface ICrabUnitFactory
-    {
-        CrabsUnit InstantiateCrabsUnit(Crab general, Crab follower, int quantiteFollower, Vector3 position);
+        CrabsUnit InstantiateCrabsUnit(GeneralCrabData general, int quantiteFollower, Vector3 position);
+        GeneralCrab InstantiateGeneralCrab(GeneralCrabData general, CrabsUnit unit, Vector3 position);
+        List<CrabFollower> InstantiateFollowers(GeneralCrabData general, int quantiteFollower, Vector3 position, Transform parent);
     }
 }
