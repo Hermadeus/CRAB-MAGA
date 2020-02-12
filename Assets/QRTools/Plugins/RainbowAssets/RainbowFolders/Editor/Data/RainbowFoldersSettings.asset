@@ -391,3 +391,66 @@ MonoBehaviour:
     Background: {fileID: 2800000, guid: a7a5633f4ec443747848421ddaef8684, type: 3}
     IsBackgroundRecursive: 0
     IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/Actions/ActionPhase
+    SmallIcon: {fileID: 2800000, guid: d40470e8d600dd84495e06df54093f10, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 480f6973370bef044b7a2d664219c627, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: a7a5633f4ec443747848421ddaef8684, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/Actions/Crabs
+    SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: ca4530bd51581dc47847c3e5b35f4c91, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/System
+    SmallIcon: {fileID: 2800000, guid: 6ecc649ba46fa2c448d60a663be30ffd, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 7ce51c638aeaa3840ab61c4a4af3885b, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: 6dc9ea4311ebb184494f51560ed772fc, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/Variables/ActionPhase
+    SmallIcon: {fileID: 2800000, guid: d40470e8d600dd84495e06df54093f10, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 480f6973370bef044b7a2d664219c627, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: a7a5633f4ec443747848421ddaef8684, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/Variables/Crabs
+    SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: ca4530bd51581dc47847c3e5b35f4c91, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Resources/Game Events/Crabs
+    SmallIcon: {fileID: 2800000, guid: a65c70fcbe9ac0b4fbcbac4a0b67e64f, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 3d8f946e891cc8f4e81b1a296f8fb6be, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: ca4530bd51581dc47847c3e5b35f4c91, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Scripts/Cameras
+    SmallIcon: {fileID: 2800000, guid: 067c540c510b2364abc671a4edf50fc2, type: 3}
+    LargeIcon: {fileID: 2800000, guid: ff70a75a2a9f7234f9275e259bbc93bc, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: d94c43293c569fc4caa787ee7cd49a95, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0

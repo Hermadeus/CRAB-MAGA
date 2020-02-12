@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CRABMAGA
+public class CameraTarget : MonoBehaviour
 {
-    public class MenuTest : MonoBehaviour
-    {
-
-    }
+    
 }

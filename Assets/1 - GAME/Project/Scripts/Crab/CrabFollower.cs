@@ -6,7 +6,7 @@ namespace CRABMAGA
 {
     public class CrabFollower : Crab, IFollowMovementBehaviour
     {
-        public GeneralCrab generalCrab = default;
+        public LeaderCrab generalCrab = default;
 
         [HideInInspector]
         public Queue<float> nextMovementPosition = new Queue<float>();

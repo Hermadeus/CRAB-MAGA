@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 884c5c5219145b04484cea72234035e0, type: 3}
-  m_Name: AP_Phase01
+  m_Name: AP_Phase02
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -25,8 +25,7 @@ MonoBehaviour:
     - Name: nextPhase
       Entry: 10
       Data: 0
-  description: "1ere phase de l'AP\n + Mouvement de cam\xE9ra\n + Le joueur n'a aucun
-    contr\xF4les"
+  description: 
   onPhaseBegin:
     m_PersistentCalls:
       m_Calls:
@@ -38,12 +37,26 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: P01_INIT - Start
+          m_StringArgument: "P02 - Choix du g\xE9n\xE9ral"
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 46a91cbbc9360234ea898d26a8c47829, type: 2}
-        m_MethodName: StartTimer
-        m_Mode: 1
+      - m_Target: {fileID: 11400000, guid: fb10266557f767e4bbe59ee2266b3259, type: 2}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onPhaseEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fb10266557f767e4bbe59ee2266b3259, type: 2}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -52,6 +65,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPhaseEnd:
-    m_PersistentCalls:
-      m_Calls: []

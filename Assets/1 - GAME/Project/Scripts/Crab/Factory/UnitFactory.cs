@@ -12,7 +12,7 @@ namespace CRABMAGA
         /// <summary>
         /// Permet d'instantier une unité de crabe complete
         /// </summary>
-        public CrabsUnit InstantiateCrabsUnit(GeneralCrabData general, int quantiteFollower, Vector3 position)
+        public CrabsUnit InstantiateCrabsUnit(LeaderCrabData general, int quantiteFollower, Vector3 position)
         {
             CrabsUnit newUnit = Instantiate(CrabUnitPrefab, position, Quaternion.identity);
             newUnit.generalCrab = InstantiateGeneralCrab(general, newUnit, position);
@@ -33,9 +33,9 @@ namespace CRABMAGA
         /// <summary>
         /// Permet d'instantier un general crab
         /// </summary>
-        public GeneralCrab InstantiateGeneralCrab(GeneralCrabData general, CrabsUnit unit, Vector3 position)
+        public LeaderCrab InstantiateGeneralCrab(LeaderCrabData general, CrabsUnit unit, Vector3 position)
         {
-            GeneralCrab newGeneralCrab = Instantiate(general.generalCrabPrefab as GeneralCrab, position, Quaternion.identity);
+            LeaderCrab newGeneralCrab = Instantiate(general.leaderCrabPrefab as LeaderCrab, position, Quaternion.identity);
 
             return newGeneralCrab;
         }
@@ -43,7 +43,7 @@ namespace CRABMAGA
         /// <summary>
         /// Permet d'instancier des followers
         /// </summary>
-        public List<CrabFollower> InstantiateFollowers(GeneralCrabData general, int quantiteFollower, Vector3 position, Transform parent)
+        public List<CrabFollower> InstantiateFollowers(LeaderCrabData general, int quantiteFollower, Vector3 position, Transform parent)
         {
             List<CrabFollower> newCrabsFollower = new List<CrabFollower>();
             for (int i = 0; i < quantiteFollower; i++)

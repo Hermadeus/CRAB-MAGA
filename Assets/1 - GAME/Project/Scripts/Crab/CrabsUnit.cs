@@ -8,7 +8,7 @@ namespace CRABMAGA
 {
     public class CrabsUnit : SerializedMonoBehaviour, ICrabUnit
     {
-        public GeneralCrab generalCrab = default;
+        public LeaderCrab generalCrab = default;
         public List<CrabFollower> followers = new List<CrabFollower>();
 
         public Transform crabFollowerParent;

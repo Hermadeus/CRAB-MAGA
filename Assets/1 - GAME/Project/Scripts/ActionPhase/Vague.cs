@@ -15,7 +15,7 @@ namespace CRABMAGA {
         [TableList(ShowIndexLabels = true, DrawScrollView = true)]
         public List<UnitToInvoke> unitsToInvoke = new List<UnitToInvoke>();
 
-        public GeneralCrabData generalCrab = default;
+        public LeaderCrabData generalCrab = default;
         public ActionPhaseManagerVariable actionPhaseManager;
 
         public void Raise()
@@ -49,6 +49,11 @@ namespace CRABMAGA {
             unitsToInvoke.Add(unitToInvoke);
             return unitToInvoke;
         }
+
+        public void OnDisable()
+        {
+            unitsToInvoke.Clear();
+        }
     }
 
     [System.Serializable]
@@ -65,11 +70,11 @@ namespace CRABMAGA {
     [System.Serializable]
     public class UnitToInvoke
     {
-        public GeneralCrabData generalCrabData;
+        public LeaderCrabData generalCrabData;
         public Vector3 position;
         public int followerToInvoke;
 
-        public UnitToInvoke(GeneralCrabData generalCrabData, int followerToInvoke, Vector3 position)
+        public UnitToInvoke(LeaderCrabData generalCrabData, int followerToInvoke, Vector3 position)
         {
             this.generalCrabData = generalCrabData;
             this.followerToInvoke = followerToInvoke;

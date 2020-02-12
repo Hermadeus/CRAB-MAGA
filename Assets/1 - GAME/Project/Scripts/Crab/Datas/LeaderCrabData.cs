@@ -6,8 +6,8 @@ using Sirenix.OdinInspector;
 
 namespace CRABMAGA
 {
-    [CreateAssetMenu(menuName = "CRAB MAGA/Crabs/General Crab Data")]
-    public class GeneralCrabData : ScriptableWithDescription
+    [CreateAssetMenu(menuName = "CRAB MAGA/Crabs/Leader Crab Data")]
+    public class LeaderCrabData : ScriptableWithDescription
     {
         [Title("GENERAL")]
         [BoxGroup("Généralité")]
@@ -18,7 +18,7 @@ namespace CRABMAGA
         public TextLanguage crabDescription;
 
         [BoxGroup("Prefabs")]
-        public GeneralCrab generalCrabPrefab = default;
+        public LeaderCrab leaderCrabPrefab = default;
         [BoxGroup("Prefabs")]
         public CrabFollower crabFollowerPrefab = default;
 

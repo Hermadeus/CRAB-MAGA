@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 042c091252aa3e64ba32a27a61e7e5f5, type: 3}
-  m_Name: Leader Classic
+  m_Name: Leader Classic 1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes: []
   description: Classic leader
   crabName:
-    frenchVersion: jean jacques
-    englishVersion: Jo
+    frenchVersion: fr ahihzda
+    englishVersion: eng ajeda
   icon: {fileID: 0}
   crabDescription:
     frenchVersion: 

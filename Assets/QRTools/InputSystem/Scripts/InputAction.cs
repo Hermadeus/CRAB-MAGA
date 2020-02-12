@@ -15,5 +15,7 @@ namespace QRTools.Inputs
 
         public abstract void Init();
         public abstract void Execute();
+
+        public void SetActive(bool state) => isActive = state;
     }
 }

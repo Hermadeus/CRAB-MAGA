@@ -9,14 +9,21 @@ namespace CRABMAGA
 {
     public class ActionPhaseManager : SerializedMonoBehaviour
     {
-        public UnityEvent onStart = new UnityEvent();
-        public UnityEvent onExit = new UnityEvent();        
-
+        [BoxGroup("References")]
+        public Transform crabesParent = default;
+        [BoxGroup("References")]
         public ActionPhase actionPhase = default;
 
-        public List<VagueData> vagues = new List<VagueData>();
+        [BoxGroup("Events")]
+        public UnityEvent 
+            onStart = new UnityEvent(),
+            onExit = new UnityEvent();        
 
-        public Transform crabesParent = default;
+
+        [FoldoutGroup("Debugs")]
+        public List<VagueData> vagues = new List<VagueData>();
+        public LeaderCrabData leaderCrabDataChoosen = default;
+
 
         private void Start()
         {
