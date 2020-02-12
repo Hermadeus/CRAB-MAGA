@@ -39,7 +39,7 @@ namespace CRABMAGA
         {
             for (int i = 0; i < generals.Count; i++)
             {
-                if (generals[i].generalCrabName == "Leader")
+                if (generals[i].crabName.GetCurrentVersion(LanguageEnum.Instance) == "Leader")
                     generals[i].isLock = false;
 
                 generals[i].isLock = true;

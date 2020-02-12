@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e24ff3f169a2194bb0bb7fb9b0d0375, type: 3}
-  m_Name: List General Crab Data
+  m_Script: {fileID: 11500000, guid: 042c091252aa3e64ba32a27a61e7e5f5, type: 3}
+  m_Name: Leader Classic
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,6 +21,17 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  description: 
-  generals:
-  - {fileID: 11400000, guid: 19fcc78e445dda4459591dc3117bb57a, type: 2}
+  description: Classic leader
+  crabName:
+    frenchVersion: jean jacques
+    englishVersion: Jo
+  icon: {fileID: 0}
+  crabDescription:
+    frenchVersion: 
+    englishVersion: 
+  generalCrabPrefab: {fileID: 3434864782944416480, guid: 00568a48dad19074abd69e61d2d2c594,
+    type: 3}
+  crabFollowerPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
+    type: 3}
+  followersMax: 10
+  isLock: 0

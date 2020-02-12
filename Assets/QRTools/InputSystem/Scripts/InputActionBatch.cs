@@ -21,7 +21,7 @@ namespace QRTools.Inputs
 
             for (int i = 0; i < inputActions.Length; i++)
             {
-                inputActions[i].Execute();
+                inputActions[i]?.Execute();
             }
         }
 
@@ -32,7 +32,7 @@ namespace QRTools.Inputs
 
             for (int i = 0; i < inputActions.Length; i++)
             {
-                inputActions[i].Init();
+                inputActions[i]?.Init();
             }
         }
         #endregion

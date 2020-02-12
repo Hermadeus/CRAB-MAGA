@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: 0
   currentLine: 0
   lineEditor: {fileID: 0}
-  generalCrabData: {fileID: 11400000, guid: 19fcc78e445dda4459591dc3117bb57a, type: 2}
+  generalCrabData: {fileID: 11400000, guid: 1b76be4953ad75d4283a1bd7f6da2359, type: 2}
 --- !u!1 &3434864783430982376
 GameObject:
   m_ObjectHideFlags: 0

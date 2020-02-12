@@ -17,3 +17,4 @@ MonoBehaviour:
   inputName: ActionPhaseBatch
   inputActions:
   - {fileID: 11400000, guid: cfb70a118ee0529489a7bc93ad9aa503, type: 2}
+  - {fileID: 11400000, guid: 759eec311bf0d0f468428db36fb6b292, type: 2}

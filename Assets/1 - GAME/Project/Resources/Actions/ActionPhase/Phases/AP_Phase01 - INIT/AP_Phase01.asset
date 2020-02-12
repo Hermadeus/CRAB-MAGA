@@ -67,7 +67,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 1b09367419e9d664cb344a2e2fb081ab, type: 2}
-        m_MethodName: TestAddUnit
+        m_MethodName: AddUnitToVague
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

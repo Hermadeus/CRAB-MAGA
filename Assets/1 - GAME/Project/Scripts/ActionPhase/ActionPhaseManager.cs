@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+using System.Collections.Generic;
+
 using Sirenix.OdinInspector;
 
 namespace CRABMAGA
@@ -11,6 +13,10 @@ namespace CRABMAGA
         public UnityEvent onExit = new UnityEvent();        
 
         public ActionPhase actionPhase = default;
+
+        public List<VagueData> vagues = new List<VagueData>();
+
+        public Transform crabesParent = default;
 
         private void Start()
         {

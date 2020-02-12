@@ -355,3 +355,39 @@ MonoBehaviour:
     Background: {fileID: 2800000, guid: 59d8a9cd11eb88946a0ed2cddad51fe6, type: 3}
     IsBackgroundRecursive: 0
     IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Data/System
+    SmallIcon: {fileID: 2800000, guid: 81d4c8f9bff9faf428c35c0b4de40701, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 4fe6b269af5e6bf4abab1a1d755508d2, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: 6dc9ea4311ebb184494f51560ed772fc, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Scripts/System
+    SmallIcon: {fileID: 2800000, guid: 6ecc649ba46fa2c448d60a663be30ffd, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 7ce51c638aeaa3840ab61c4a4af3885b, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: 6dc9ea4311ebb184494f51560ed772fc, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Data/Inputs/ActionPhase
+    SmallIcon: {fileID: 2800000, guid: d40470e8d600dd84495e06df54093f10, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 480f6973370bef044b7a2d664219c627, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: a7a5633f4ec443747848421ddaef8684, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0
+  - Type: 1
+    Key: Assets/1 - GAME/Project/Data/Variables/ActionPhase
+    SmallIcon: {fileID: 2800000, guid: d40470e8d600dd84495e06df54093f10, type: 3}
+    LargeIcon: {fileID: 2800000, guid: 480f6973370bef044b7a2d664219c627, type: 3}
+    IsIconRecursive: 0
+    IsIconCustom: 0
+    Background: {fileID: 2800000, guid: a7a5633f4ec443747848421ddaef8684, type: 3}
+    IsBackgroundRecursive: 0
+    IsBackgroundCustom: 0

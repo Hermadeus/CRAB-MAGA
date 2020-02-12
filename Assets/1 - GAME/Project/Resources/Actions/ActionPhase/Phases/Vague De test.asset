@@ -9,23 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7eaddddfa4b28458e128803e3cfebd, type: 3}
-  m_Name: Classic Leader Data
+  m_Script: {fileID: 11500000, guid: 6f0ed99d0660dc947ba6a7d188068189, type: 3}
+  m_Name: Vague De test
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: c0f3a21deb416044f9b8ac3df7f2be9f, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: unitFactory
+      Entry: 10
+      Data: 0
   description: 
-  generalCrabName: Leader
-  generalCrabPrefab: {fileID: 3434864782944416480, guid: 00568a48dad19074abd69e61d2d2c594,
-    type: 3}
-  crabFollowerPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
-    type: 3}
-  followersMax: 10
-  isLock: 0
+  unitsToInvoke: []
+  generalCrab: {fileID: 11400000, guid: 1b76be4953ad75d4283a1bd7f6da2359, type: 2}
+  actionPhaseManager: {fileID: 11400000, guid: 86dde3697083f46489dcc06f3a1a95fe, type: 2}

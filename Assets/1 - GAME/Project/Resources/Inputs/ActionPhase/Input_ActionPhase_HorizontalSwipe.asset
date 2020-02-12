@@ -10,26 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2efa7e27d99f35c459e3b332f3b17632, type: 3}
-  m_Name: New Touch
+  m_Name: Input_ActionPhase_HorizontalSwipe
   m_EditorClassIdentifier: 
-  description: Ne pas linker
+  description: "D\xE9place les crabes sur X"
   isActive: 1
-  inputName: 
-  touchType: 1
+  inputName: HorizontalSwipe
+  touchType: 7
   onInput:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000}
-        m_MethodName: DebugPosition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   doubleClickTime: 0.2
   onTouchEnter:
     m_PersistentCalls:
@@ -44,15 +33,9 @@ MonoBehaviour:
   longPressedTimer: 0
   onSwipeRight:
     m_PersistentCalls:
-      m_Calls: []
-  onSwipeLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  onSwipeUp:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000}
-        m_MethodName: DebugPosition
+      - m_Target: {fileID: 11400000, guid: 1a568b64d66c52849825ae9eefee3310, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -62,6 +45,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSwipeLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 84aacf3915b0c8445b4187b3b7ba3507, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSwipeUp:
+    m_PersistentCalls:
+      m_Calls: []
   onSwipeDown:
     m_PersistentCalls:
       m_Calls: []

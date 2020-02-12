@@ -38,9 +38,4 @@ namespace CRABMAGA
     {
         void Init();
     }
-
-    public interface IGeneralCrab
-    {
-
-    }
 }
