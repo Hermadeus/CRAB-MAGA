@@ -27,5 +27,7 @@ namespace CRABMAGA
 
         [BoxGroup("Détails")]
         public bool isLock = false;
+
+
     }
 }

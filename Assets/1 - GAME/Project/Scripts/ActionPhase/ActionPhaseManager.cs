@@ -22,6 +22,7 @@ namespace CRABMAGA
 
         [FoldoutGroup("Debugs")]
         public List<VagueData> vagues = new List<VagueData>();
+        [ReadOnly]
         public LeaderCrabData leaderCrabDataChoosen = default;
 
 

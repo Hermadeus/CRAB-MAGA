@@ -67,6 +67,8 @@ namespace QRTools.Inputs
 
         public Vector2 InputEnterPosition { get; private set; }
         public Vector2 InputExitPosition { get; private set; }
+
+        public Vector2 InputCurrentPosition { get; private set; }
         #endregion
 
         #region Runtime Methods
@@ -236,6 +238,7 @@ namespace QRTools.Inputs
                         }
                         break;
                     case TouchPhase.Ended:
+                        onTouchEnd?.Invoke();
                         InputExitPosition = touch.position;
                         break;
                 }
@@ -276,9 +279,11 @@ namespace QRTools.Inputs
                         break;
                     case TouchPhase.Moved:
                         onTouchStay?.Invoke();
+                        InputCurrentPosition = touch.position;
                         break;
                     case TouchPhase.Stationary:
                         onTouchStay?.Invoke();
+                        InputCurrentPosition = touch.position;
                         break;
                     case TouchPhase.Ended:
                         onTouchEnd?.Invoke();

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 2033653698023534489}
   - component: {fileID: 2033653698023534494}
   m_Layer: 0
-  m_Name: Crab's Group
+  m_Name: CrabUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,12 +82,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: factory
-      Entry: 6
-      Data: 
-  miniCrabPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
-    type: 3}
-  miniCrabParent: {fileID: 2033653696519543075}
-  leader: {fileID: 0}
-  initCrab: 10
+    SerializationNodes: []
+  generalCrab: {fileID: 0}
+  followers: []
+  crabFollowerParent: {fileID: 2033653696519543075}

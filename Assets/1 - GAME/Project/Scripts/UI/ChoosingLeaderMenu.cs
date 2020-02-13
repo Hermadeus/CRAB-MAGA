@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using QRTools.UI;
+using QRTools.Variables;
+
+using Sirenix.OdinInspector;
 
 namespace CRABMAGA
 {
     public class ChoosingLeaderMenu : UIMenu
     {
+        [BoxGroup("Leader Menu")]
         public Vague vague = default;
+        [BoxGroup("Leader Menu")]
         public ActionPhaseManager actionPhaseManager = default;
-        public Phase PhaseChooseUnit = default;
+        [BoxGroup("Leader Menu")]
+        public GameEvent onVagueRaise = default;
 
         public override void Hide()
         {
@@ -20,7 +26,6 @@ namespace CRABMAGA
         public override void Init()
         {
             base.Init();
-            PhaseChooseUnit.onPhaseEnd.AddListener(ValidateUnit);
         }
 
         public override void Show()
@@ -30,7 +35,13 @@ namespace CRABMAGA
 
         public void ValidateUnit()
         {
-            vague.AddUnitsToInvoke(new UnitToInvoke(actionPhaseManager.leaderCrabDataChoosen, 5, Vector3.zero));
+            AddUnit();
+            vague.Raise();
+        }
+
+        public void AddUnit()
+        {
+            vague.AddUnitsToInvoke(new UnitToInvoke(actionPhaseManager.leaderCrabDataChoosen, actionPhaseManager.leaderCrabDataChoosen.followersMax, new Vector3(0, 0, 0)));
         }
     }
 }
