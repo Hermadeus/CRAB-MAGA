@@ -34,7 +34,6 @@ namespace CRABMAGA
         public void InitializeActionPhase()
         {
             actionPhase.StartPhase(this);
-
         }
     }
 }

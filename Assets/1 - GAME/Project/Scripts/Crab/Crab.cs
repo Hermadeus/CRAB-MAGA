@@ -28,6 +28,9 @@ namespace CRABMAGA
         /// </summary>
         [HideInInspector] public LineEditor lineEditor;
 
+        [SerializeField] private bool isMoving = false;
+        public bool IsMoving { get => isMoving; set => isMoving = value; }
+
         private void Start()
         {
             lineEditor = FindObjectOfType<LineEditor>();

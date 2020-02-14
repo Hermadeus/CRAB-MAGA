@@ -29,7 +29,7 @@ MonoBehaviour:
   crabDescription:
     frenchVersion: 
     englishVersion: 
-  leaderCrabPrefab: {fileID: 3434864782944416480, guid: 00568a48dad19074abd69e61d2d2c594,
+  leaderCrabPrefab: {fileID: 3434864782944416480, guid: f6504f5b15b6b374690454ac20d594e0,
     type: 3}
   crabFollowerPrefab: {fileID: 8334517308334819687, guid: 2c23cab3d1d22fa408dccecc83f50742,
     type: 3}

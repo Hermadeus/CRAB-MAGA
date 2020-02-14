@@ -5,6 +5,8 @@ using QRTools.Variables;
 
 using Sirenix.OdinInspector;
 
+using CRABMAGA;
+
 namespace QRTools.Inputs
 {
     [CreateAssetMenu(fileName = "New Touch", menuName = "QRTools/Input/Touch", order = 20)]
@@ -12,7 +14,6 @@ namespace QRTools.Inputs
     {
         #region Properties & Variables
         [SerializeField, EnumPaging] private TouchState touchType = default;
-        public UnityEvent onInput = new UnityEvent();
 
         [Tooltip("Delay between two click if DOUBLE_TAP"), ShowIf("touchType", TouchState.DOUBLE_TAP)]
         public float doubleClickTime = .2f;
@@ -23,6 +24,8 @@ namespace QRTools.Inputs
         public UnityEvent onTouchStay = new UnityEvent();
         public UnityEvent onTouchEnd = new UnityEvent();
 
+        public UnityEvent onLongTouch = new UnityEvent();
+
         #region LongTouch
         [Tooltip("Delay between two click if SIMPLE_LONGPRESSED"), ShowIf("touchType", TouchState.SIMPLE_LONGPRESSED)]
         public float longPressedTime = .5f;
@@ -30,19 +33,24 @@ namespace QRTools.Inputs
         #endregion
 
         #region Swipping
-        [ShowIf("touchType", TouchState.HORIZONTAL_SWIPE)]
         public UnityEvent onSwipeRight = new UnityEvent();
-        [ShowIf("touchType", TouchState.HORIZONTAL_SWIPE)]
         public UnityEvent onSwipeLeft = new UnityEvent();
 
-        [ShowIf("touchType", TouchState.VERTICAL_SWIPE)]
         public UnityEvent onSwipeUp = new UnityEvent();
-        [ShowIf("touchType", TouchState.VERTICAL_SWIPE)]
         public UnityEvent onSwipeDown = new UnityEvent();
-
 
         [Tooltip("Distance to run with your finger to activate the input")]
         public float swipeDistanceThresold = 50f;
+
+        public CameraVariable cam;
+        Ray ray;
+        RaycastHit hit;
+        private Vector3 raypoint = new Vector3();
+        public Vector3 Raypoint
+        {
+            get => raypoint;
+            set => raypoint = value;
+        }
 
         bool asSwipe = false;
         #endregion
@@ -56,10 +64,45 @@ namespace QRTools.Inputs
                 ChangeState(value);
             }
         }
+
         private Touch touch;
+        public Touch Touch
+        {
+            get
+            {
+                return touch;
+            }
+            set
+            {
+                touch = value;
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        InputEnterPosition = touch.position;
+                        Raycast();
+                        break;
+                    case TouchPhase.Moved:
+                        InputCurrentPosition = touch.position;
+                        Raycast();
+                        break;
+                    case TouchPhase.Stationary:
+                        InputCurrentPosition = touch.position;
+                        Raycast();
+                        break;
+                    case TouchPhase.Ended:
+                        InputExitPosition = touch.position;
+                        Raycast();
+                        break;
+                    case TouchPhase.Canceled:
+                        break;
+                }
+            }
+        }
+
         public delegate void PlayInput();
         PlayInput PlayCurrentInput;
         bool asTouch = false;
+        bool asTouchEnd = false;
 
         private Vector2
             startPos = new Vector2(),
@@ -100,15 +143,6 @@ namespace QRTools.Inputs
                 case TouchState.SIMPLE:
                     PlayCurrentInput += SimpleTouch;
                     break;
-                case TouchState.SIMPLE_DOWN:
-                    PlayCurrentInput += SimpleDown;
-                    break;
-                case TouchState.SIMPLE_UP:
-                    PlayCurrentInput += SimpleUp;
-                    break;
-                case TouchState.SIMPLE_PRESSED:
-                    PlayCurrentInput += SimplePressed;
-                    break;
                 case TouchState.SIMPLE_LONGPRESSED:
                     PlayCurrentInput += SimpleLongPressed;
                     break;
@@ -126,6 +160,9 @@ namespace QRTools.Inputs
                 case TouchState.VERTICAL_SWIPE:
                     PlayCurrentInput += VerticalSwipe;
                     break;
+                case TouchState.SWIPE_PRESSED:
+                    PlayCurrentInput += LongSwipe;
+                    break;
             }
         }
 
@@ -133,6 +170,12 @@ namespace QRTools.Inputs
         {
             Debug.Log("EnterPosition = " + InputEnterPosition);
             Debug.Log("ExitPosition = " + InputExitPosition);
+        }
+
+        public void ForceEnter()
+        {
+            touch.phase = TouchPhase.Began;
+            Swipe(touchType);
         }
         #endregion
 
@@ -143,9 +186,6 @@ namespace QRTools.Inputs
         }
 
         void SimpleTouch() => Simple();
-        void SimpleDown() => SimpleTouch(TouchPhase.Began);
-        void SimpleUp() => SimpleTouch(TouchPhase.Ended);
-        void SimplePressed() => SimpleTouch(TouchPhase.Stationary);
         void SimpleLongPressed() => LongTap();
 
         void HorizontalSwipe() => Swipe(TouchState.HORIZONTAL_SWIPE);
@@ -153,6 +193,8 @@ namespace QRTools.Inputs
         void SimpleSwipe() => Swipe(TouchState.SWIPE);
 
         void DoubleTapDown() => DoubleTap(TouchPhase.Began);
+
+        void LongSwipe() => SwipePressed();
         #endregion
 
         #region Private Methods
@@ -160,26 +202,51 @@ namespace QRTools.Inputs
         {
             if (Input.touchCount == 1)
             {
-                touch = Input.touches[0];
+                Touch = Input.touches[0];
 
-                switch (touch.phase)
+                switch (Touch.phase)
                 {
                     case TouchPhase.Began:
-                        startPos = touch.position;
+                        startPos = Touch.position;
                         onTouchEnter?.Invoke();
-                        InputEnterPosition = touch.position;
                         break;
                     case TouchPhase.Moved:
                         onTouchStay?.Invoke();
+                        endPos = Touch.position;
 
                         if (asSwipe) return;
-                        endPos = touch.position;
                         AnalyseGesture(startPos, endPos, state);
                         break;
                     case TouchPhase.Ended:
                         asSwipe = false;
                         onTouchEnd?.Invoke();
-                        InputExitPosition = touch.position;
+                        break;
+                }
+            }
+        }
+
+        void SwipePressed()
+        {
+            if (Input.touchCount == 1)
+            {
+                Touch = Input.GetTouch(0);
+
+                switch (Touch.phase)
+                {
+                    case TouchPhase.Began:
+                        onTouchEnter?.Invoke();
+                        break;
+                    case TouchPhase.Moved:
+                        endPos = Touch.position;
+                        onTouchStay?.Invoke();
+                        AnalyseGesture(startPos, endPos, TouchState.SWIPE_PRESSED);
+                        break;
+                    case TouchPhase.Stationary:
+                        startPos = Touch.position;
+                        break;
+                    case TouchPhase.Ended:
+                        asSwipe = false;
+                        onTouchEnd?.Invoke();
                         break;
                 }
             }
@@ -190,56 +257,81 @@ namespace QRTools.Inputs
             if(Vector2.Distance(start, end) > swipeDistanceThresold)
             {
                 asSwipe = true;
-                onInput?.Invoke();
 
                 switch (state)
                 {
                     case TouchState.VERTICAL_SWIPE:
-                        if (start.y < end.y)
+                        if (start.y < end.y && end.y - start.y > swipeDistanceThresold)
                             onSwipeUp?.Invoke();
-                        else if (start.y > end.y)
+                        else if (start.y > end.y && start.y - end.y > swipeDistanceThresold)
                             onSwipeDown?.Invoke();
                         break;
 
                     case TouchState.HORIZONTAL_SWIPE:
-                        if (start.x < end.x)
+                        if (start.x < end.x && end.x - start.x > swipeDistanceThresold)
                             onSwipeRight?.Invoke();
-                        else if (start.x > end.x)
+                        else if (start.x > end.x && start.x - end.x > swipeDistanceThresold)
+                            onSwipeLeft?.Invoke();
+                        break;
+
+                    case TouchState.SWIPE:
+                        if (start.y < end.y && end.y - start.y > swipeDistanceThresold)
+                            onSwipeUp?.Invoke();
+                        else if (start.y > end.y && start.y - end.y > swipeDistanceThresold)
+                            onSwipeDown?.Invoke();
+                        if (start.x < end.x && end.x - start.x > swipeDistanceThresold)
+                            onSwipeRight?.Invoke();
+                        else if (start.x > end.x && start.x - end.x > swipeDistanceThresold)
+                            onSwipeLeft?.Invoke();
+                        break;
+
+                    case TouchState.SWIPE_PRESSED:
+                        if (end.y - start.y > swipeDistanceThresold)
+                            onSwipeUp?.Invoke();
+                        else if (start.y - end.y > swipeDistanceThresold)
+                            onSwipeDown?.Invoke();
+                        if (end.x - start.x > swipeDistanceThresold)
+                            onSwipeRight?.Invoke();
+                        else if (start.x - end.x > swipeDistanceThresold)
                             onSwipeLeft?.Invoke();
                         break;
                 }
             }
-        }
+        }        
 
         void LongTap()
         {
             if (Input.touchCount == 1)
             {
-                touch = Input.GetTouch(0);
+                Touch = Input.GetTouch(0);
 
-                switch (touch.phase)
+                switch (Touch.phase)
                 {
                     case TouchPhase.Began:
                         longPressedTimer = longPressedTime;
                         onTouchEnter?.Invoke();
-                        InputEnterPosition = touch.position;
                         asTouch = true;
+                        asTouchEnd = false;
                         break;
                     case TouchPhase.Stationary:
                         longPressedTimer -= Time.deltaTime;
 
-                        if (longPressedTimer > 0)
+                        if (longPressedTimer < 0)
                             onTouchStay?.Invoke();
 
                         if (longPressedTimer <= 0 && asTouch)
                         {
-                            onInput?.Invoke();
+                            onLongTouch?.Invoke();
                             asTouch = false;
+                            asTouchEnd = true;
                         }
                         break;
                     case TouchPhase.Ended:
-                        onTouchEnd?.Invoke();
-                        InputExitPosition = touch.position;
+                        if (asTouchEnd)
+                        {
+                            onTouchEnd?.Invoke();
+                            asTouchEnd = false;
+                        }
                         break;
                 }
             }
@@ -250,14 +342,14 @@ namespace QRTools.Inputs
             if (Input.touchCount == 1)
             {
                 float timeSinceLastClick = Time.time - lastClickTime;
-                touch = Input.GetTouch(0);
+                Touch = Input.GetTouch(0);
 
-                if (touch.phase == phase && timeSinceLastClick <= doubleClickTime)
+                if (Touch.phase == phase && timeSinceLastClick <= doubleClickTime)
                 {
                     lastClickTime = Time.time;
-                    onInput?.Invoke();
-                    InputEnterPosition = touch.position;
-                    InputExitPosition = touch.position;
+                    onTouchEnter?.Invoke();
+                    InputEnterPosition = Touch.position;
+                    InputExitPosition = Touch.position;
                 }
 
                 lastClickTime = Time.time;
@@ -268,26 +360,21 @@ namespace QRTools.Inputs
         {
             if (Input.touchCount == 1)
             {
-                touch = Input.GetTouch(0);    
+                Touch = Input.GetTouch(0);
 
-                switch (touch.phase)
+                switch (Touch.phase)
                 {
                     case TouchPhase.Began:
-                        onInput?.Invoke();
                         onTouchEnter?.Invoke();
-                        InputEnterPosition = touch.position;
                         break;
                     case TouchPhase.Moved:
                         onTouchStay?.Invoke();
-                        InputCurrentPosition = touch.position;
                         break;
                     case TouchPhase.Stationary:
                         onTouchStay?.Invoke();
-                        InputCurrentPosition = touch.position;
                         break;
                     case TouchPhase.Ended:
-                        onTouchEnd?.Invoke();
-                        InputExitPosition = touch.position;
+                        onTouchEnd.Invoke();
                         break;
                     case TouchPhase.Canceled:
                         break;
@@ -295,18 +382,16 @@ namespace QRTools.Inputs
             }
         }
 
-        void SimpleTouch(TouchPhase phase)
+        void Raycast()
         {
-            if (Input.touchCount == 1)
-            {
-                touch = Input.GetTouch(0);
+            if (cam == null)
+                return;
 
-                if (touch.phase == phase)
-                {
-                    onInput?.Invoke();
-                    InputEnterPosition = touch.position;
-                    InputExitPosition = touch.position;
-                }
+            ray = cam.cam.ScreenPointToRay(touch.position);
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                Raypoint = hit.point;
             }
         }
         #endregion
@@ -316,16 +401,14 @@ namespace QRTools.Inputs
     public enum TouchState
     {
         SIMPLE,
-        SIMPLE_DOWN,
-        SIMPLE_UP,
-        SIMPLE_PRESSED,
         SIMPLE_LONGPRESSED,
 
         DOUBLE_TAP,
 
         SWIPE,
         HORIZONTAL_SWIPE,
-        VERTICAL_SWIPE
+        VERTICAL_SWIPE,
+        SWIPE_PRESSED
     }
     #endregion
 }

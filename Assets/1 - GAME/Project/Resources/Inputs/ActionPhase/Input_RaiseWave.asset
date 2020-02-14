@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2efa7e27d99f35c459e3b332f3b17632, type: 3}
-  m_Name: Input_ActionPhase_HorizontalSwipe
+  m_Name: Input_RaiseWave
   m_EditorClassIdentifier: 
-  description: "D\xE9place les crabes sur X"
+  description: 
   isActive: 0
-  inputName: HorizontalSwipe
-  touchType: 4
+  inputName: 
+  touchType: 5
   doubleClickTime: 0.2
   onTouchEnter:
     m_PersistentCalls:
@@ -33,24 +33,16 @@ MonoBehaviour:
   longPressedTimer: 0
   onSwipeRight:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 1a568b64d66c52849825ae9eefee3310, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onSwipeLeft:
     m_PersistentCalls:
+      m_Calls: []
+  onSwipeUp:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 84aacf3915b0c8445b4187b3b7ba3507, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
+      - m_Target: {fileID: 11400000, guid: 1b09367419e9d664cb344a2e2fb081ab, type: 2}
+        m_MethodName: StartWave
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -59,10 +51,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSwipeUp:
-    m_PersistentCalls:
-      m_Calls: []
+      - m_Target: {fileID: 11400000, guid: b98a147e24ec608478e8cf61ff5280ca, type: 2}
+        m_MethodName: OnEnd
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 704a15574415b464bae73ed0bfc9d3fb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: CRABMAGA.ActionPhase, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSwipeDown:
     m_PersistentCalls:
       m_Calls: []
-  swipeDistanceThresold: 350
+  swipeDistanceThresold: 250

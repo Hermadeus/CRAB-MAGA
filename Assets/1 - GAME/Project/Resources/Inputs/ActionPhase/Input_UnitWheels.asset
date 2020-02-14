@@ -13,10 +13,31 @@ MonoBehaviour:
   m_Name: Input_UnitWheels
   m_EditorClassIdentifier: 
   description: 
-  isActive: 0
+  isActive: 1
   inputName: 
-  touchType: 4
-  onInput:
+  touchType: 1
+  doubleClickTime: 0.2
+  onTouchEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTouchStay:
+    m_PersistentCalls:
+      m_Calls: []
+  onTouchEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 6193ed2650b691643ae7f161896f7ebd, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onLongTouch:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 2591edd23d8cc9a409a89c4ab86361c8, type: 2}
@@ -30,62 +51,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  doubleClickTime: 0.2
-  onTouchEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: enter
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTouchStay:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: stay
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTouchEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: exit
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 6193ed2650b691643ae7f161896f7ebd, type: 2}
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   longPressedTime: 0.5
-  longPressedTimer: -0.64175606
+  longPressedTimer: 0.16024733
   onSwipeRight:
     m_PersistentCalls:
       m_Calls: []

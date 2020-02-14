@@ -20,6 +20,8 @@ namespace CRABMAGA
 
         public override void Move(Crab crab)
         {
+            if (!crab.IsMoving) return;
+
             IFollowMovementBehaviour cf = crab as CrabFollower;
 
             crab.transform.position += new Vector3(Mathf.Sin(.1f * Time.deltaTime), 0, crab.Speed) * Time.deltaTime;

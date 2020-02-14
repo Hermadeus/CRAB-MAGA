@@ -15,14 +15,14 @@ namespace CRABMAGA
         public CrabsUnit InstantiateCrabsUnit(LeaderCrabData general, int quantiteFollower, Vector3 position)
         {
             CrabsUnit newUnit = Instantiate(CrabUnitPrefab, position, Quaternion.identity);
-            newUnit.generalCrab = InstantiateGeneralCrab(general, newUnit, position);
-            newUnit.generalCrab.transform.parent = newUnit.transform;
+            newUnit.leaderCrab = InstantiateGeneralCrab(general, newUnit, position);
+            newUnit.leaderCrab.transform.parent = newUnit.transform;
 
             if (quantiteFollower > 0)
             {
-                newUnit.followers = InstantiateFollowers(newUnit.generalCrab.generalCrabData, quantiteFollower, position, newUnit.transform);
+                newUnit.followers = InstantiateFollowers(newUnit.leaderCrab.generalCrabData, quantiteFollower, position, newUnit.transform);
                 for (int i = 0; i < newUnit.followers.Count; i++)
-                    newUnit.followers[i].generalCrab = newUnit.generalCrab;
+                    newUnit.followers[i].generalCrab = newUnit.leaderCrab;
             }
 
             newUnit.name = "Crab Unit : " + general.crabName.GetCurrentVersion(LanguageEnum.Instance);

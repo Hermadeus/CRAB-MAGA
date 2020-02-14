@@ -104,6 +104,18 @@ namespace CRABMAGA
             return x;
         }
 
+        public int GetLinePosition(Vector3 position)
+        {
+            position = new Vector3(Mathf.RoundToInt(position.x), 0, 0);
+
+            int x = 0;
+            for (int i = 0; i < lines.Count; i++)
+                if (lines[i].position.x == position.x)
+                    x = i;
+
+            return (int)lines[x].position.x;
+        }
+
         private void OnDrawGizmos()
         {
             //for (int i = 0; i < lines.Count; i++)

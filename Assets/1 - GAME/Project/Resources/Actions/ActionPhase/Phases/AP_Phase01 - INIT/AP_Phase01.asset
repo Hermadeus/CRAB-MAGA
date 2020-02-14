@@ -30,17 +30,6 @@ MonoBehaviour:
   onPhaseBegin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PHASE 01 - debut
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 46a91cbbc9360234ea898d26a8c47829, type: 2}
         m_MethodName: StartTimer
         m_Mode: 1
@@ -63,17 +52,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onPhaseEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
-        m_MethodName: OnDebug
-        m_Mode: 5
+      - m_Target: {fileID: 11400000, guid: cfb70a118ee0529489a7bc93ad9aa503, type: 2}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PHASE 01 - end
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPhaseEnd:
+    m_PersistentCalls:
+      m_Calls: []

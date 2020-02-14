@@ -18,3 +18,5 @@ MonoBehaviour:
   inputActions:
   - {fileID: 11400000, guid: cfb70a118ee0529489a7bc93ad9aa503, type: 2}
   - {fileID: 11400000, guid: 77920e74d52d66147939d9d0d2d53b87, type: 2}
+  - {fileID: 11400000, guid: a93b2534cb883ac4fbf2c078baeb8deb, type: 2}
+  - {fileID: 11400000, guid: 5d04ee364abfa0b4f922e74fafa7958f, type: 2}

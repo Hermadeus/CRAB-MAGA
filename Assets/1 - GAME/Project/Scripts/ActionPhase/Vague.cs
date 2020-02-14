@@ -17,7 +17,11 @@ namespace CRABMAGA {
 
         public LeaderCrabData generalCrab = default;
         public ActionPhaseManagerVariable actionPhaseManager;
+        public LineEditorVariable lineEditorVariable;
 
+        public float offsetZApparition = 1f;
+
+        [Button]
         public void Raise()
         {
             VagueData vaguedata = new VagueData();
@@ -25,24 +29,39 @@ namespace CRABMAGA {
             {
                  CrabsUnit newUnit = unitFactory.InstantiateCrabsUnit(unitsToInvoke[i].generalCrabData,
                     unitsToInvoke[i].followerToInvoke,
-                    unitsToInvoke[i].position);
+                    new Vector3(unitsToInvoke[i].position.x, 0, -i * offsetZApparition));
 
                 newUnit.transform.parent = actionPhaseManager.Value.crabesParent;
+                newUnit.leaderCrab.currentLine = lineEditorVariable.Value.GetLine(newUnit.leaderCrab.transform.position);
 
                 vaguedata.crabUnits.Add(newUnit);
             }
 
-            actionPhaseManager.Value.vagues.Add(vaguedata);
+            actionPhaseManager.Value.vagues.Insert(0, vaguedata);
+        }
+
+        [Button]
+        public void StartWave(int vagueIndex)
+        {
+            for (int y = 0; y < actionPhaseManager.Value.vagues[vagueIndex].crabUnits.Count; y++)
+            {
+                actionPhaseManager.Value.vagues[vagueIndex].crabUnits[y].leaderCrab.IsMoving = true;
+                for (int z = 0; z < actionPhaseManager.Value.vagues[vagueIndex].crabUnits[y].followers.Count; z++)
+                {
+                    actionPhaseManager.Value.vagues[vagueIndex].crabUnits[y].followers[z].IsMoving = true;
+                }
+            }
+
             unitsToInvoke.Clear();
         }
 
-        public void AddUnitToVague()
-        {
-            AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(0, 0, 0)));
-            AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(1, 0, 0)));
-            AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(-1, 0, 0)));
-            Raise();
-        }
+        //public void AddUnitToVague()
+        //{
+        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(0, 0, 0)));
+        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(1, 0, 0)));
+        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(-1, 0, 0)));
+        //    Raise();
+        //}
 
         public UnitToInvoke AddUnitsToInvoke(UnitToInvoke unitToInvoke)
         {
