@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CRABMAGA
 {
-    [CreateAssetMenu(menuName = "CRAB MAGA/CameraSystem/CameraVariable")]
+    [CreateAssetMenu(menuName = "CRAB MAGA/Cameras/CameraVariable")]
     public class CameraVariable : ScriptableObject
     {
-        public Camera cam = default;
+        public Camera Value = default;
     }
 }

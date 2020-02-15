@@ -31,4 +31,6 @@ MonoBehaviour:
   actionPhaseManager: {fileID: 11400000, guid: 86dde3697083f46489dcc06f3a1a95fe, type: 2}
   lineEditorVariable: {fileID: 11400000, guid: 4d2a850076771c743afeda3401006ac3, type: 2}
   offsetZApparition: 1
-  invokeIndex: 0
+  invokeIndex: 6
+  cameraManagerVariable: {fileID: 11400000, guid: 8aa1d2e8ac950a04ab6af607ae989698,
+    type: 2}

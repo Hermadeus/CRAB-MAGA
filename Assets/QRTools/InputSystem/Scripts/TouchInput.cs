@@ -387,7 +387,7 @@ namespace QRTools.Inputs
             if (cam == null)
                 return;
 
-            ray = cam.cam.ScreenPointToRay(touch.position);
+            ray = cam.Value.ScreenPointToRay(touch.position);
 
             if(Physics.Raycast(ray, out hit))
             {

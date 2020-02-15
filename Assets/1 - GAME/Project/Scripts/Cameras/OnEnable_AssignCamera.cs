@@ -9,7 +9,7 @@ namespace CRABMAGA
         public CameraVariable cam;
         private void OnEnable()
         {
-            cam.cam = GetComponent<Camera>();
+            cam.Value = GetComponent<Camera>();
             Destroy(this);
         }
     }

@@ -25,6 +25,7 @@ namespace CRABMAGA {
 
         VagueData currentVagueData = new VagueData();
 
+        public CameraManagerVariable cameraManagerVariable = default;
 
         [Button]
         public void Raise()
@@ -47,22 +48,6 @@ namespace CRABMAGA {
             actionPhaseManager.Value.currentVague = currentVagueData;
             actionPhaseManager.Value.SetIsControllableOfAllCrabsOfWave(currentVagueData);
             invokeIndex++;
-            
-
-            //for (int i = 0; i < unitsToInvoke.Count; i++)
-            //{
-            //     CrabsUnit newUnit = unitFactory.InstantiateCrabsUnit(unitsToInvoke[i].generalCrabData,
-            //        unitsToInvoke[i].followerToInvoke,
-            //        new Vector3(unitsToInvoke[i].position.x, 0, -i * offsetZApparition));
-
-            //    newUnit.transform.parent = actionPhaseManager.Value.crabesParent;
-            //    newUnit.leaderCrab.currentLine = lineEditorVariable.Value.GetLine(newUnit.leaderCrab.transform.position);
-
-            //    vaguedata.crabUnits.Add(newUnit);
-            //    actionPhaseManager.Value.currentVague = vaguedata;
-            //    actionPhaseManager.Value.SetIsControllableOfAllCrabsOfWave(vaguedata);
-            //}
-
         }
 
         [Button]
@@ -86,18 +71,11 @@ namespace CRABMAGA {
             }
 
             currentVagueData = new VagueData();
+            //cameraManagerVariable.Value.SetTargetOnWave(currentVagueData);
 
             invokeIndex = 0;
             unitsToInvoke.Clear();
         }
-
-        //public void AddUnitToVague()
-        //{
-        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(0, 0, 0)));
-        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(1, 0, 0)));
-        //    AddUnitsToInvoke(new UnitToInvoke(generalCrab, generalCrab.followersMax, new Vector3(-1, 0, 0)));
-        //    Raise();
-        //}
 
         public UnitToInvoke AddUnitsToInvoke(UnitToInvoke unitToInvoke)
         {
