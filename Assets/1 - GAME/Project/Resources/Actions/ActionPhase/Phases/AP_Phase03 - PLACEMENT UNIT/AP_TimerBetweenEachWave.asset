@@ -26,6 +26,29 @@ MonoBehaviour:
       m_Calls: []
   onTimerEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b98a147e24ec608478e8cf61ff5280ca, type: 2}
+        m_MethodName: OnBegin
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 704a15574415b464bae73ed0bfc9d3fb,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: CRABMAGA.ActionPhase, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 3c5e4ae3504759e478212e17dc1b2c16, type: 2}
+        m_MethodName: OnDebug
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: end timer
+          m_BoolArgument: 0
+        m_CallState: 2
   tempsTotalRestant: 0
   inPause: 0

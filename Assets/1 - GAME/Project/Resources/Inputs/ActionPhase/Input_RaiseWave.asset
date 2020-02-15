@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efa7e27d99f35c459e3b332f3b17632, type: 3}
   m_Name: Input_RaiseWave
   m_EditorClassIdentifier: 
-  description: 
-  isActive: 0
+  description: 'Vague.StartWave(); ->Lance les crabes
+
+    Lance le timer '
+  isActive: 1
   inputName: 
   touchType: 5
   doubleClickTime: 0.2
@@ -67,3 +69,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   swipeDistanceThresold: 250
+  cam: {fileID: 0}

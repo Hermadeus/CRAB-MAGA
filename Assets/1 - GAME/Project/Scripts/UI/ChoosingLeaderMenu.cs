@@ -15,8 +15,8 @@ namespace CRABMAGA
         public Vague vague = default;
         [BoxGroup("Leader Menu")]
         public ActionPhaseManager actionPhaseManager = default;
-        [BoxGroup("Leader Menu")]
-        public GameEvent onVagueRaise = default;
+
+        public UnitToInvoke leaderToInvoke;
 
         public override void Hide()
         {
@@ -33,15 +33,20 @@ namespace CRABMAGA
             base.Show();
         }
 
-        public void ValidateUnit()
+        public void InvokeLeader()
         {
-            AddUnit();
+            if (leaderToInvoke == null) return;
+
+            vague.AddUnitsToInvoke(leaderToInvoke);
             vague.Raise();
         }
 
-        public void AddUnit()
+        public void AddLeader()
         {
-            vague.AddUnitsToInvoke(new UnitToInvoke(actionPhaseManager.leaderCrabDataChoosen, actionPhaseManager.leaderCrabDataChoosen.followersMax, new Vector3(0, 0, 0)));
+            if (actionPhaseManager.leaderCrabDataChoosen == null)
+                return;
+
+            leaderToInvoke = new UnitToInvoke(actionPhaseManager.leaderCrabDataChoosen, actionPhaseManager.leaderCrabDataChoosen.followersMax, new Vector3(0, 0, 0));
         }
     }
 }

@@ -31,6 +31,9 @@ namespace CRABMAGA
         [SerializeField] private bool isMoving = false;
         public bool IsMoving { get => isMoving; set => isMoving = value; }
 
+        [SerializeField] private bool isControllable = false;
+        public bool IsControllable { get => isControllable; set => isControllable = value; }
+
         private void Start()
         {
             lineEditor = FindObjectOfType<LineEditor>();

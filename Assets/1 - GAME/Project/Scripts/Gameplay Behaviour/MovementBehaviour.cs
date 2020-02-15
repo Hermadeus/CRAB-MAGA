@@ -35,7 +35,7 @@ namespace CRABMAGA
         /// <param name="crab"></param>
         public virtual void TurnRight(Crab crab)
         {
-            if (!crab.IsMoving) return;
+            if (!crab.IsMoving || !crab.IsControllable) return;
 
             if (crab.currentLine + 1 > crab.lineEditor.lines.Count - 1)
                 return;
@@ -49,7 +49,7 @@ namespace CRABMAGA
         /// <param name="crab"></param>
         public virtual void TurnLeft(Crab crab)
         {
-            if (!crab.IsMoving) return;
+            if (!crab.IsMoving || !crab.IsControllable) return;
 
             if (crab.currentLine - 1 < 0)
                 return;

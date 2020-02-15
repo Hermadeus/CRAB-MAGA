@@ -21,28 +21,61 @@ namespace CRABMAGA {
 
         public float offsetZApparition = 1f;
 
+        public int invokeIndex = 0;
+
+        VagueData currentVagueData = new VagueData();
+
+
         [Button]
         public void Raise()
         {
-            VagueData vaguedata = new VagueData();
-            for (int i = 0; i < unitsToInvoke.Count; i++)
+            if(unitsToInvoke == null)
             {
-                 CrabsUnit newUnit = unitFactory.InstantiateCrabsUnit(unitsToInvoke[i].generalCrabData,
-                    unitsToInvoke[i].followerToInvoke,
-                    new Vector3(unitsToInvoke[i].position.x, 0, -i * offsetZApparition));
-
-                newUnit.transform.parent = actionPhaseManager.Value.crabesParent;
-                newUnit.leaderCrab.currentLine = lineEditorVariable.Value.GetLine(newUnit.leaderCrab.transform.position);
-
-                vaguedata.crabUnits.Add(newUnit);
+                Debug.LogError("Il n'y a pas d'unités invoquées !!! + Vague.Raise()");
+                return;
             }
 
-            actionPhaseManager.Value.vagues.Insert(0, vaguedata);
+
+            CrabsUnit newUnit = unitFactory.InstantiateCrabsUnit(unitsToInvoke[invokeIndex].generalCrabData,
+                unitsToInvoke[invokeIndex].followerToInvoke,
+                new Vector3(unitsToInvoke[invokeIndex].position.x, 0, -invokeIndex * offsetZApparition));
+
+            newUnit.transform.parent = actionPhaseManager.Value.crabesParent;
+            newUnit.leaderCrab.currentLine = lineEditorVariable.Value.GetLine(newUnit.leaderCrab.transform.position);
+
+            currentVagueData.crabUnits.Add(newUnit);
+            actionPhaseManager.Value.currentVague = currentVagueData;
+            actionPhaseManager.Value.SetIsControllableOfAllCrabsOfWave(currentVagueData);
+            invokeIndex++;
+            
+
+            //for (int i = 0; i < unitsToInvoke.Count; i++)
+            //{
+            //     CrabsUnit newUnit = unitFactory.InstantiateCrabsUnit(unitsToInvoke[i].generalCrabData,
+            //        unitsToInvoke[i].followerToInvoke,
+            //        new Vector3(unitsToInvoke[i].position.x, 0, -i * offsetZApparition));
+
+            //    newUnit.transform.parent = actionPhaseManager.Value.crabesParent;
+            //    newUnit.leaderCrab.currentLine = lineEditorVariable.Value.GetLine(newUnit.leaderCrab.transform.position);
+
+            //    vaguedata.crabUnits.Add(newUnit);
+            //    actionPhaseManager.Value.currentVague = vaguedata;
+            //    actionPhaseManager.Value.SetIsControllableOfAllCrabsOfWave(vaguedata);
+            //}
+
         }
 
         [Button]
         public void StartWave(int vagueIndex)
         {
+            if (unitsToInvoke == null)
+            {
+                Debug.LogError("Il n'y a pas d'unités invoquées !!! + Vague.StartWave()");
+                return;
+            }
+
+            actionPhaseManager.Value.vagues.Insert(0, currentVagueData);
+
             for (int y = 0; y < actionPhaseManager.Value.vagues[vagueIndex].crabUnits.Count; y++)
             {
                 actionPhaseManager.Value.vagues[vagueIndex].crabUnits[y].leaderCrab.IsMoving = true;
@@ -52,6 +85,9 @@ namespace CRABMAGA {
                 }
             }
 
+            currentVagueData = new VagueData();
+
+            invokeIndex = 0;
             unitsToInvoke.Clear();
         }
 
@@ -83,6 +119,22 @@ namespace CRABMAGA {
         public VagueData()
         {
             crabUnits = new List<CrabsUnit>();
+        }
+
+        public List<Crab> GetAllCrabs()
+        {
+            List<Crab> crabs = new List<Crab>();
+
+            for (int i = 0; i < crabUnits.Count; i++)
+            {
+                for (int y = 0; y < crabUnits[i].followers.Count; y++)
+                {
+                    crabs.Add(crabUnits[i].followers[y]);
+                }
+                crabs.Add(crabUnits[i].leaderCrab);
+            }
+
+            return crabs;
         }
     }
 

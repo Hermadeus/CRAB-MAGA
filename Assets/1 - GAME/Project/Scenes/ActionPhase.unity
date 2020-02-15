@@ -672,6 +672,9 @@ MonoBehaviour:
       m_Calls: []
   vagues: []
   leaderCrabDataChoosen: {fileID: 0}
+  allCrabUnits: []
+  currentVague:
+    crabUnits: []
 --- !u!114 &268724893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abe1eb874d39514690cf4b8970eed24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "-Hide la wheel\n-r\xE9activer les inputs pour les crabs\n-Desactiver
+  description: "-Hide la wheel\n-r\xE9activer les inputs pour les crabs + Raise\n-Desactiver
     le swapping de la roue"
   ListenerName: OnWheelDesappear
   Event: {fileID: 11400000, guid: 6193ed2650b691643ae7f161896f7ebd, type: 2}
@@ -1497,6 +1500,28 @@ MonoBehaviour:
           m_StringArgument: CLOSE
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: a93b2534cb883ac4fbf2c078baeb8deb, type: 2}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 1b09367419e9d664cb344a2e2fb081ab, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   isActive: 1
 --- !u!114 &815137947
 MonoBehaviour:
@@ -1511,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: "-Apparition de la wheel\n-Suit le doigt du joueur\n-D\xE9sactive
-    les inputs des crabs\n-Active le swapping de la roue"
+    les inputs des crabs + Raise\n-Active le swapping de la roue"
   ListenerName: OnWheelAppear
   Event: {fileID: 11400000, guid: 2591edd23d8cc9a409a89c4ab86361c8, type: 2}
   Response:
@@ -1572,6 +1597,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: a93b2534cb883ac4fbf2c078baeb8deb, type: 2}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   isActive: 1
 --- !u!1 &861914333
@@ -2532,18 +2568,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1146506908}
-        m_MethodName: ValidateUnit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1146506908}
-        m_MethodName: Hide
+        m_MethodName: AddLeader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2618,7 +2643,10 @@ MonoBehaviour:
   animSpeed: 2
   vague: {fileID: 11400000, guid: 1b09367419e9d664cb344a2e2fb081ab, type: 2}
   actionPhaseManager: {fileID: 268724892}
-  onVagueRaise: {fileID: 11400000, guid: 34a0a5b64b553fe41b61679506391c7a, type: 2}
+  leaderToInvoke:
+    generalCrabData: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    followerToInvoke: 0
 --- !u!225 &1146506909
 CanvasGroup:
   m_ObjectHideFlags: 0
